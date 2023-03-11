@@ -1,9 +1,17 @@
+const connection = require("./config/database");
+
 const getHomePage = (req, res) => {
   //process data
   //call models
-
-  res.send("Hello World 1!");
+  let users = [];
+  connection.query("select * from Users u ", function (err, results, fields) {
+    users = results;
+    console.log(">>> results=", results); // results contains rows returned by server
+    console.log(">>> check users: ", users);
+    res.send(JSON.stringify(users));
+  });
 };
+
 const getA = (req, res) => {
   res.send("Hello World 2!");
 };
