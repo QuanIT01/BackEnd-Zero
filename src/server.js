@@ -14,7 +14,7 @@ configViewEngine(app);
 // khai bao route
 app.use("/", webRoutes);
 
-// simple query
+//simple query
 connection.query("select * from Users u ", function (err, results, fields) {
   console.log(">>> results=", results); // results contains rows returned by server
 });
