@@ -10,7 +10,7 @@ const hostname = process.env.HOST_NAME;
 
 //config req.body
 app.use(express.json()); // Used to parse JSON bodies
-app.use(express.urlencoded()); //Parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 
 // config template engine
 configViewEngine(app);
@@ -20,7 +20,7 @@ app.use("/", webRoutes);
 
 //simple query
 connection.query("select * from Users u ", function (err, results, fields) {
-  console.log(">>> results=", results); // results contains rows returned by server
+  //console.log(">>> results=", results); // results contains rows returned by server
 });
 
 app.listen(port, hostname, () => {
