@@ -4,6 +4,7 @@ const {
   getA,
   getB,
   postCreateUser,
+  getCreatePage,
 } = require("../controllers/homeController");
 const router = express.Router();
 // router.Method("/route , handler")
@@ -13,5 +14,6 @@ router.get("/a", getA);
 router.get("/b", getB);
 
 router.post("/create-user", postCreateUser);
+router.get("/create", getCreatePage);
 
 module.exports = router; //export default
