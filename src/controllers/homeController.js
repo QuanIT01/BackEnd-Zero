@@ -13,13 +13,6 @@ const getHomePage = async (req, res) => {
   return res.render("home.ejs", { listUsers: results });
 };
 
-const getA = (req, res) => {
-  res.send("Hello World 2!");
-};
-const getB = (req, res) => {
-  res.render("sample.ejs");
-};
-
 const postCreateUser = async (req, res) => {
   let email = req.body.email;
   let name = req.body.myname;
@@ -38,7 +31,8 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
   const userId = req.params.id;
-  let user = await getUserById(userId);
+  //let user = await getUserById(userId);
+  let user = await User.findById(userId).exec();
   res.render("edit.ejs", { userEdit: user }); // x <- y
 };
 
@@ -47,7 +41,11 @@ const postUpdateUser = async (req, res) => {
   let name = req.body.myname;
   let city = req.body.city;
   let userId = req.body.userId;
-  await updateUserById(email, name, city, userId);
+  //await updateUserById(email, name, city, userId);
+  await User.updateOne(
+    { _id: userId },
+    { name: name, email: email, city: city }
+  );
   res.redirect("/");
 };
 
@@ -65,8 +63,6 @@ const postHandleRemoveUser = async (req, res) => {
 
 module.exports = {
   getHomePage,
-  getA,
-  getB,
   postCreateUser,
   getCreatePage,
   getUpdatePage,
