@@ -14,8 +14,6 @@ const router = express.Router();
 // router.Method("/route , handler")
 
 router.get("/", getHomePage);
-router.get("/a", getA);
-router.get("/b", getB);
 
 router.get("/create", getCreatePage);
 router.get("/update/:id", getUpdatePage);
