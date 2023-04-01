@@ -11,6 +11,7 @@ const {
 const {
   postCreateCustomer,
   postCreatArrayeCustomer,
+  getAllCustomers,
 } = require("../controllers/customerController");
 
 routerAPI.get("/users", getUsersAPI);
@@ -23,5 +24,6 @@ routerAPI.post("/files", postUploadMultipleFilesAPI);
 
 routerAPI.post("/customers", postCreateCustomer);
 routerAPI.post("/customers-many", postCreatArrayeCustomer);
+routerAPI.get("/customers", getAllCustomers);
 
 module.exports = routerAPI; //export default

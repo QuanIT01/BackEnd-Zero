@@ -45,4 +45,12 @@ module.exports = {
       });
     }
   },
+
+  getAllCustomers: async (req, res) => {
+    let result = await getAllCustomerService();
+    return res.status(200).json({
+      EC: 0,
+      data: result,
+    });
+  },
 };
