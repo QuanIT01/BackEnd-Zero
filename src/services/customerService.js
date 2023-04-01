@@ -1,14 +1,14 @@
 const Customer = require("../models/customer");
 
-const createCustomerService = async (customerData) => {
+const createCustomerService = async (updateCustomerData) => {
   try {
     let result = await Customer.create({
-      name: customerData.name,
-      address: customerData.email,
-      phone: customerData.phone,
-      email: customerData.email,
-      description: customerData.description,
-      image: customerData.image,
+      name: updateCustomerData.name,
+      address: updateCustomerData.email,
+      phone: updateCustomerData.phone,
+      email: updateCustomerData.email,
+      description: updateCustomerData.description,
+      image: updateCustomerData.image,
     });
     return result;
   } catch (error) {
@@ -37,8 +37,22 @@ const getAllCustomerService = async () => {
   }
 };
 
+const putUpdateCustomerService = async (id, name, email, address) => {
+  try {
+    let result = await Customer.updateOne(
+      { _id: id },
+      { name, email, address }
+    );
+    return result;
+  } catch (error) {
+    console.log("error", error);
+    return null;
+  }
+};
+
 module.exports = {
   createCustomerService,
   createArrayCustomerService,
   getAllCustomerService,
+  putUpdateCustomerService,
 };
