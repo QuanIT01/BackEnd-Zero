@@ -30,24 +30,24 @@ app.use("/v1/api/", apiRoutes);
   //test connection
   try {
     //using mongoose
-    //await connection();
+    await connection();
     //using mongodb
     // Connection URL
-    const url = process.env.DB_HOST_WITH_DRIVER;
-    const client = new MongoClient(url);
-    // Database Name
-    const dbName = process.env.DB_NAME;
-    await client.connect();
-    console.log("Connected successfully to server");
+    // const url = process.env.DB_HOST_WITH_DRIVER;
+    // const client = new MongoClient(url);
+    // // Database Name
+    // const dbName = process.env.DB_NAME;
+    // await client.connect();
+    // console.log("Connected successfully to server");
 
-    const db = client.db(dbName);
-    const collection = db.collection("customers");
+    // const db = client.db(dbName);
+    // const collection = db.collection("customers");
 
-    collection.insertOne({ address: "ha noi", email: "q@gmail.com" });
+    //collection.insertOne({ address: "ha noi", email: "q@gmail.com" });
     //collection.insertOne({ tset: [1, 2, 3] });
 
-    let a = await collection.findOne({ address: "ha noi" });
-    console.log(">>>findOne = ", a);
+    //let a = await collection.findOne({ address: "ha noi" });
+    //console.log(">>>findOne = ", a);
 
     app.listen(port, hostname, () => {
       console.log(`Backend zero app listening on port ${port}`);
