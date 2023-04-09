@@ -3,7 +3,7 @@ const {
   getTask,
   uTask,
   dTask,
-} = require("../services/productService");
+} = require("../services/taskService");
 
 module.exports = {
   postCreateTask: async (req, res) => {

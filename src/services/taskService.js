@@ -22,11 +22,11 @@ module.exports = {
       .exec();
     return result;
   },
-  uProject: async (data) => {
+  uTask: async (data) => {
     let result = await Task.updateOne({ _id: data.id }, { ...data });
     return result;
   },
-  dProject: async (id) => {
+  dTask: async (id) => {
     let result = await Task.deleteById(id);
     return result;
   },
