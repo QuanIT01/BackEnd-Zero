@@ -19,6 +19,8 @@ const {
 const {
   postCreateProject,
   getAllProject,
+  updateProject,
+  deleteProject,
 } = require("../controllers/projectController");
 
 routerAPI.get("/users", getUsersAPI);
@@ -39,6 +41,8 @@ routerAPI.delete("/customers-many", deleteArrayCustomer);
 
 routerAPI.post("/projects", postCreateProject);
 routerAPI.get("/projects", getAllProject);
+routerAPI.put("/projects", updateProject);
+routerAPI.delete("/projects", deleteProject);
 
 routerAPI.get("/info", (req, res) => {
   return res.status(200).json({
