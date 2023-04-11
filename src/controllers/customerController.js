@@ -20,35 +20,34 @@ module.exports = {
       description: Joi.string(),
     });
     //const error = schema.validate
-    const error = schema.validate(req.body, { abortEarly: false });
+    error = schema.validate(req.body, { abortEarly: false });
     // return res.status(200).json({
     //   msg: error,
     // });
-    if (error) {
-      //return error
+    // if (error) {
+    //return error
+    // } else {
+    let imageUrl = "";
+    if (!req.files || Object.keys(req.files).length === 0) {
+      //do nothing
     } else {
-      let imageUrl = "";
-      if (!req.files || Object.keys(req.files).length === 0) {
-        //do nothing
-      } else {
-        let result = await uploadSingleFile(req.files.image);
-        imageUrl = result.path;
-      }
-      let customerData = {
-        name,
-        address,
-        phone,
-        email,
-        description,
-        image: imageUrl,
-      };
-      let customer = await createCustomerService(customerData);
-
-      return res.status(200).json({
-        EC: 0,
-        data: customer,
-      });
+      let result = await uploadSingleFile(req.files.image);
+      imageUrl = result.path;
     }
+    let customerData = {
+      name,
+      address,
+      phone,
+      email,
+      description,
+      image: imageUrl,
+    };
+    let customer = await createCustomerService(customerData);
+
+    return res.status(200).json({
+      EC: 0,
+      data: customer,
+    });
   },
   postCreatArrayeCustomer: async (req, res) => {
     let customers = await createArrayCustomerService(req.body.customers);
